@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">update22.vguard.co.kr</domain>
+        <domain includeSubdomains="true">cads.korail.com</domain>
+        <domain includeSubdomains="true">175.123.132.19</domain>
+        <domain includeSubdomains="true">schemas.android.com</domain>
+    </domain-config>
+    <base-config cleartextTrafficPermitted="true"/>
+</network-security-config>

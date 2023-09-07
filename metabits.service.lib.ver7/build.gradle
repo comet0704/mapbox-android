@@ -1,0 +1,208 @@
+apply plugin: 'com.android.library'
+//apply plugin: "com.jaredsburrows.license"
+//apply plugin: 'kotlin-android'
+
+dependencies {
+    implementation dependenciesList.mapboxAndroidTelemetry
+    implementation dependenciesList.mapboxJavaGeoJSON
+    api dependenciesList.mapboxAndroidGestures
+    implementation dependenciesList.mapboxJavaTurf
+    implementation dependenciesList.supportAnnotations
+    implementation dependenciesList.supportAppcompat
+    implementation dependenciesList.supportFragment
+    implementation dependenciesList.okhttp3
+    implementation dependenciesList.reLinker
+
+
+    // Mapbox 변경 추가
+    api dependenciesList.gmsLocation
+}
+
+android {
+    compileSdkVersion androidVersions.compileSdkVersion
+    buildToolsVersion androidVersions.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion androidVersions.minSdkVersion
+        targetSdkVersion androidVersions.targetSdkVersion
+
+        // TODO Mapbox Update 기존 내용 추가
+        versionCode 1
+        versionName "1.0"
+
+
+        //buildConfigField "String", "GIT_REVISION_SHORT", String.format("\"%s\"", getGitRevision())
+        buildConfigField "String", "GIT_REVISION_SHORT", String.format("\"%s\"", "1.0"/*getGitRevision()*/)     // TODO Mapbox Update 기존 내용으로 수정
+        buildConfigField "String", "MAPBOX_SDK_IDENTIFIER", String.format("\"%s\"", "mapbox-maps-android")
+        buildConfigField "String", "MAPBOX_SDK_VERSION", String.format("\"%s\"", project.VERSION_NAME)
+        buildConfigField "String", "MAPBOX_VERSION_STRING", String.format("\"Mapbox/%s\"", project.VERSION_NAME)
+        buildConfigField "String", "MAPBOX_EVENTS_USER_AGENT", String.format("\"mapbox-maps-android/%s\"", project.VERSION_NAME)
+
+
+        // TODO Mapbox Update 기존 내용 추가
+        buildConfigField "String", "MAPBOX_EVENTS_USER_AGENT_BASE", String.format("\"MapboxEventsAndroid/%s\"", project.VERSION_NAME)
+        buildConfigField "String", "METABITS_EVENTS_USER_AGENT_BASE", new StringBuilder().append("\"").append("MetabitsEventsAndroid/").append(project.VERSION_NAME).append("\"").toString()
+
+
+        ndk {
+            // abiFilters 옵션 설정
+            if(gradle.startParameter.taskNames){
+                def taskName = gradle.startParameter.taskNames.get(0)
+                //def taskRequests = gradle.startParameter.taskRequests
+                println "startParameter taskName = $taskName"
+                //println "taskRequests = $taskRequests"
+                if(taskName.contains("Debug")){     //개발시에는 빌드 속도 단축을 위해 테스트 단말에 맞게 하나만 선택
+                    //abiFilters 'arm64-v8a'
+                    abiFilters 'armeabi-v7a'
+                }else{                              //MTI 등 외부에 보낼때는 꼭 둘다 해서 보낼것.
+                    abiFilters 'armeabi-v7a', 'arm64-v8a'
+                }
+            }else{
+                abiFilters 'armeabi-v7a', 'arm64-v8a'
+            }
+            println "abiFilters = $abiFilters"
+        }
+    }
+
+    defaultPublishConfig project.hasProperty("mapbox.buildtype") ? project.getProperty("mapbox.buildtype") : "debug"
+
+    // We sometimes want to invoke Gradle without building a native dependency, e.g. when we just want
+    // to invoke the Java tests. When we explicitly specify an ABI of 'none', no native dependencies are
+    // added. When another ABI is specified explicitly, we're just going to build that ABI. In all other
+    // cases, all ABIs are built.
+    //
+    // When invoking from the command line or to override the device default, set `-Pmapbox.abis=...` to
+    // only build the desired architectures.
+    //
+    // When building from Android Studio, gradle.properties sets `android.buildOnlyTargetAbi=true` so that
+    // only the architecture for the device you're running on gets built.
+    def abi = 'all'
+    if (project.hasProperty("mapbox.abis")) {
+        // Errors when the user invokes Gradle from the command line and didn't set mapbox.abis
+        abi = project.getProperty("mapbox.abis")
+    }
+
+    if (abi != 'none') {
+        externalNativeBuild {
+            cmake {
+                path "./CMakeLists.txt"
+                version "3.10.2"
+            }
+        }
+    }
+
+    // Allow determining the C++ STL we're using when building Mapbox GL.
+    def stl = 'c++_static'
+    /*if (project.hasProperty("mapbox.stl")) {
+        stl = project.getProperty("mapbox.stl")
+    }*/
+    defaultConfig {
+        if (abi != 'none') {
+            externalNativeBuild {
+                cmake {
+                    arguments "-DANDROID_TOOLCHAIN=clang"
+                    arguments "-DANDROID_STL=" + stl
+                    arguments "-DANDROID_CPP_FEATURES=exceptions"
+                    arguments "-DMBGL_PLATFORM=android"
+                    arguments "-DMASON_PLATFORM=android"
+                    //arguments "-DNodeJS_EXECUTABLE=" + node
+                    //arguments "-DNodeJS_EXECUTABLE=C:\\Program Files\\nodejs\\node.exe "
+                    //arguments "-Dnpm_EXECUTABLE=" + npm
+                    //arguments "-Dnpm_EXECUTABLE=C:\\Users\\geosoft\\AppData\\Roaming\\npm\\"
+                    //arguments "-Dnpm_EXECUTABLE=C:\\Program Files\\nodejs\\npm.cmd"
+
+                    // Enable ccache if the user has installed it.
+                    //if (ccache?.trim()) {
+                    //    arguments "-DANDROID_CCACHE=" + ccache
+                    //}
+
+                    cFlags "-Qunused-arguments"
+                    cppFlags "-Qunused-arguments"
+
+                    //targets "mapbox-gl"
+                    //targets "gtest"
+                    //targets "mbgl-core"
+                    targets "geomaps-gl"
+
+                    /*if (defaultPublishConfig.equalsIgnoreCase("debug")) {
+                        targets "example-custom-layer"
+                    }
+
+                    if (project.hasProperty("mapbox.with_test")) {
+                        targets "mbgl-test"
+                    }
+
+                    if (project.hasProperty("mapbox.with_benchmark")) {
+                        targets "mbgl-benchmark"
+                    }*/
+
+                    if (abi != 'all') {
+                        abiFilters abi.split(' ')
+                    } else {
+                        //abiFilters "armeabi-v7a", "x86", "arm64-v8a", "x86_64"
+                       abiFilters "armeabi-v7a", "arm64-v8a"
+                    }
+                }
+            }
+        }
+
+        // proguard config for .aar
+        consumerProguardFiles 'proguard-rules.pro'
+    }
+
+    // avoid naming conflicts, force usage of prefix
+    resourcePrefix 'mapbox_'
+
+    sourceSets {
+        // limit amount of exposed library resources
+        main.res.srcDirs += 'src/main/res-public'
+    }
+
+    lintOptions {
+        disable 'MissingTranslation', 'TypographyQuotes', 'ObsoleteLintCustomCheck', 'MissingPermission', 'WrongThreadInterprocedural'
+        checkAllWarnings true
+        warningsAsErrors false
+    }
+
+    buildTypes {
+        debug {
+            testCoverageEnabled true
+            jniDebuggable true
+        }
+        release{
+            testCoverageEnabled false
+            jniDebuggable false
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+/*licenseReport {
+    generateHtmlReport = false
+    generateJsonReport = true
+    copyHtmlReportToAssets = false
+    copyJsonReportToAssets = false
+}*/
+
+def static getGitRevision() {
+    def cmd = "git rev-parse --short HEAD"
+    def proc = cmd.execute()
+    def ref = proc.text.trim()
+    return ref
+}
+
+configurations {
+    all*.exclude group: 'commons-logging', module: 'commons-logging'
+    all*.exclude group: 'commons-collections', module: 'commons-collections'
+}
+
+/*
+apply from: "${rootDir}/gradle/gradle-javadoc.gradle"
+apply from: "${rootDir}/gradle/gradle-checkstyle.gradle"
+apply from: "${rootDir}/gradle/gradle-dependencies-graph.gradle"
+apply from: "${rootDir}/gradle/gradle-update-vendor-modules.gradle"
+apply from: "${rootDir}/gradle/android-nitpick.gradle"
+apply from: "${rootDir}/gradle/gradle-bintray.gradle"
+apply from: "${rootDir}/gradle/jacoco-report.gradle"
+*/

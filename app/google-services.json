@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "706391365497",
+    "firebase_url": "https://geosoft-b3303.firebaseio.com",
+    "project_id": "geosoft-b3303",
+    "storage_bucket": "geosoft-b3303.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:706391365497:android:46703b0db1722151",
+        "android_client_info": {
+          "package_name": "com.example.chaeseongjong.corailworkerapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "706391365497-c8kauj91qadlgj2qgr7hlkjo1ramiptj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCS5UMvmE577MzDVrT0wOe6peRIbMtPLGs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:706391365497:android:877b11d9e48b0414",
+        "android_client_info": {
+          "package_name": "android.com.korail.cadsmdm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "706391365497-c8kauj91qadlgj2qgr7hlkjo1ramiptj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCS5UMvmE577MzDVrT0wOe6peRIbMtPLGs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

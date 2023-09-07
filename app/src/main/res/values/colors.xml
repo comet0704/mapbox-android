@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#ff4081</color>
+
+    <color name="primary">#E43F3F</color>
+    <color name="primary_dark">#E12929</color>
+    <color name="primary_darker">#CC1D1D</color>
+    <color name="accent">#FFFFFF</color>
+
+    <color name="black">#000000</color>
+    <color name="jet">#222222</color>
+    <color name="oil">#333333</color>
+    <color name="monsoon">#777777</color>
+    <color name="jumbo">#888888</color>
+    <color name="aluminum">#999999</color>
+    <color name="base">#AAAAAA</color>
+    <color name="iron">#CCCCCC</color>
+    <color name="white">#FFFFFF</color>
+
+    <color name="bgcolor">#fafafa</color>
+    <color name="toolBar">#242635</color>
+    <color name="btn_active_01_nor.9">#42435E</color>
+    <color name="btn_active_02_nor.9">#DA4C49</color>
+    <color name="btn_active_03_nor.9">#FF8E01</color>
+    <color name="btn_active_04_nor.9">#B968C7</color>
+    <color name="btn_active_05_nor.9">#00AFFE</color>
+    <color name="btn_active_06_nor.9">#EC407A</color>
+    <color name="btn_active_07_nor.9">#5a8eb5</color>
+    <color name="btn_inactive.9">#BDBDBD</color>
+
+    <color name="btn_active_08_nor.9">#2d2d47</color>
+
+    <color name="btn_active_09_nor.9">#078592</color>
+    <color name="btn_active_10_nor.9">#345893</color>
+
+    <color name="btn_active_11_nor.9">#5a8eb5</color>
+
+
+    <color name="BackgroundColor">#e7e7e7</color>
+    <color name="Cancel">#f13f3c</color>
+    <color name="Check">#1f202b</color>
+    <color name="background">#99000000</color>
+    <color name="BackGroundWarning">#99ED0000</color>
+
+    <color name="btn_active_05_nor">#FF00AFFE</color>
+
+
+    <color name="activityBg">#ecf0f1</color>
+    <color name="keyTxt">#bdc3c7</color>
+    <color name="lockscreenInfo">#7f8c8d</color>
+    <color name="lockscreenWarn">#c0392b</color>
+    <color name="keyBgNormal">#34495D</color>
+    <color name="keyBgPressed">#2c3e50</color>
+
+
+    <color name="gray">#7D7F80</color>
+    <color name="gray_light">#EEEEEE</color>
+
+</resources>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+>
+
+
+
+
+    <!-- 지도뷰 relativelayoutmap -->
+    <RelativeLayout
+
+        android:id="@+id/relativelayoutmap"
+        android:layout_alignParentLeft="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <com.mapbox.mapboxsdk.maps.MapView
+            android:id="@+id/accidentmapview"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
+
+
+        <TextView
+            android:layout_marginTop="60dp"
+            android:id="@+id/txtView_zoomLv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/txtView_center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtView_zoomLv"
+            android:text=""
+            android:textSize="20dp" />
+
+        <ImageView
+            android:src="@drawable/navi_car_pos"
+            android:id="@+id/imageMarker"
+            android:scaleType="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:paddingLeft="155dp"
+            android:id="@+id/txtView_speed"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text=""
+            android:textSize="30dp" />
+
+
+    </RelativeLayout>
+
+
+    
+
+
+
+</RelativeLayout>

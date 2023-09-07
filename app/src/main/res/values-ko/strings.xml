@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- Exafe Sample Strings -->    
+    <string name="app_name">GKOVI 5.0.0</string>
+
+    <string name="action_settings">Settings</string>
+
+
+    <string name="metabits.access.token">pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpbG10dnA3NzY3OTZ0dmtwejN2ZnUycjYifQ.1W5oTOnWXQ9R1w8u3Oo1yA</string>
+
+
+    <string name="APP_VER">Ver. 5.0.0</string>
+    <string name="APP_VER_STR">5.0.0</string>
+
+    
+</resources>

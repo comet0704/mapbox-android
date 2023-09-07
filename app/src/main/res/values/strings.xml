@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">GKOVI 5.0.0</string>
+    <string name="metabits.access.token">pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpbG10dnA3NzY3OTZ0dmtwejN2ZnUycjYifQ.1W5oTOnWXQ9R1w8u3Oo1yA</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="APP_VER">Ver. 5.0.0</string>
+    <string name="APP_VER_STR">5.0.0</string>
+
+
+
+    <!-- Sliding Menu item icons <item>@drawable/ico_sub_alarm_dark</item> -->
+    <array name="nav_drawer_icons">
+
+        <item>@drawable/ico_sub_manual_dark</item>
+        <item>@drawable/ico_sub_update_dark</item>
+        <item>@drawable/ico_sub_error_dark</item>
+        <item>@drawable/ico_sub_cctv_dark</item>
+        <item>@drawable/ico_sub_setup_dark</item>
+    </array>
+
+    <!-- Sliding Menu items <item>알람</item>         <item>후방 CCTV 보기</item> -->
+
+
+    <!-- Sliding Menu item icons         <item>@drawable/ico_sub_alarm_dark</item>         <item>@drawable/ico_sub_cctv_dark</item> -->
+    <array name="nav_drawer_icons_driving">
+
+        <item>@drawable/ico_sub_manual_dark</item>
+        <item>@drawable/ico_sub_error_dark</item>
+        <item>@drawable/ico_sub_setup_dark</item>
+    </array>
+
+</resources>

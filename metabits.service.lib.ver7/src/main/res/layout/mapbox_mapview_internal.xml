@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.mapbox.mapboxsdk.maps.widgets.CompassView
+        android:id="@+id/compassView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/mapbox_compassContentDescription"/>
+
+    <ImageView
+        android:visibility="gone"
+        android:id="@+id/logoView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@null"/>
+
+    <ImageView
+        android:visibility="gone"
+        android:id="@+id/attributionView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:clickable="true"
+        android:focusable="true"
+        android:contentDescription="@string/mapbox_attributionsIconContentDescription"/>
+
+
+    <!-- TODO Mapbox 변경 : scopeView 레이아웃 추가 -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/scopeView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@android:color/transparent"
+            android:contentDescription="@null"
+            android:src="@drawable/mapbox_scope"
+            android:visibility="invisible" />
+
+    </RelativeLayout>
+
+</merge>

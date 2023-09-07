@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <style name="mapbox_LocationComponent">
+    <item name="mapbox_foregroundDrawable">@drawable/mapbox_user_icon</item>
+    <item name="mapbox_backgroundDrawable">@drawable/mapbox_user_stroke_icon</item>
+    <item name="mapbox_bearingDrawable">@drawable/mapbox_user_bearing_icon</item>
+    <item name="mapbox_gpsDrawable">@drawable/mapbox_user_puck_icon</item>
+
+    <item name="mapbox_foregroundDrawableStale">@drawable/mapbox_user_icon_stale</item>
+    <item name="mapbox_backgroundDrawableStale">@drawable/mapbox_user_stroke_icon</item>
+
+    <item name="mapbox_accuracyAlpha">0.15</item>
+    <item name="mapbox_accuracyColor">@color/mapbox_location_layer_blue</item>
+
+    <item name="mapbox_elevation">12dp</item>
+
+    <item name="mapbox_enableStaleState">true</item>
+    <item name="mapbox_staleStateTimeout">30000</item>
+
+    <!-- Location icon padding -->
+    <item name="mapbox_iconPaddingLeft">0</item>
+    <item name="mapbox_iconPaddingTop">0</item>
+    <item name="mapbox_iconPaddingRight">0</item>
+    <item name="mapbox_iconPaddingBottom">0</item>
+
+    <!-- Location icon scale based on map zoom levels -->
+    <item name="mapbox_maxZoomIconScale">1</item>
+    <item name="mapbox_minZoomIconScale">0.6</item>
+
+    <!-- Camera tracking settings -->
+    <item name="mapbox_trackingGesturesManagement">false</item>
+    <item name="mapbox_trackingInitialMoveThreshold">@dimen/mapbox_locationComponentTrackingInitialMoveThreshold</item>
+    <item name="mapbox_trackingMultiFingerMoveThreshold">@dimen/mapbox_locationComponentTrackingMultiFingerMoveThreshold</item>
+
+  </style>
+
+  <!-- TODO Mapbox 변경 : mapbox_geo_LocationComponent를 추가 -->
+  <style name="mapbox_geo_LocationComponent">
+    <item name="mapbox_foregroundDrawable">@drawable/navi_car_pos</item>
+    <item name="mapbox_backgroundDrawable">@drawable/navi_car_pos</item>
+    <item name="mapbox_bearingDrawable">@drawable/navi_car_pos</item>
+    <!--item name="mapbox_navigationDrawable">@drawable/navi_car_pos</item-->
+    <item name="mapbox_gpsDrawable">@drawable/navi_car_pos</item>
+
+    <item name="mapbox_foregroundDrawableStale">@drawable/navi_car_pos</item>
+    <item name="mapbox_backgroundDrawableStale">@drawable/navi_car_pos</item>
+
+    <item name="mapbox_accuracyAlpha">0.15</item>
+    <item name="mapbox_accuracyColor">@color/mapbox_location_layer_blue</item>
+
+    <item name="mapbox_elevation">12dp</item>
+
+    <item name="mapbox_enableStaleState">true</item>
+    <item name="mapbox_staleStateTimeout">30000</item>
+
+    <!-- Location icon padding -->
+    <item name="mapbox_iconPaddingLeft">0</item>
+    <item name="mapbox_iconPaddingTop">0</item>
+    <item name="mapbox_iconPaddingRight">0</item>
+    <item name="mapbox_iconPaddingBottom">0</item>
+
+    <!-- Location icon scale based on map zoom levels -->
+    <item name="mapbox_maxZoomIconScale">1</item>
+    <item name="mapbox_minZoomIconScale">1</item>
+
+    <!-- Map zoom levels -->
+    <!-- 줌레벨 max 17, min 3 : 6에서 7로 업그레이드시 mapbox_maxZoom, mapbox_minZoom이 없어짐 -->
+    <!--item name="mapbox_maxZoom">17</item>
+    <item name="mapbox_minZoom">3</item-->
+
+    <!-- Camera tracking settings -->
+    <item name="mapbox_trackingGesturesManagement">false</item>
+    <item name="mapbox_trackingInitialMoveThreshold">@dimen/mapbox_locationComponentTrackingInitialMoveThreshold</item>
+    <item name="mapbox_trackingMultiFingerMoveThreshold">@dimen/mapbox_locationComponentTrackingMultiFingerMoveThreshold</item>
+
+  </style>
+
+</resources>

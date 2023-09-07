@@ -1,0 +1,92 @@
+apply plugin: 'com.android.application'
+
+apply from: "${rootDir}/metabits.service.lib.ver7/dependencies.gradle"
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion "28.0.3"
+    defaultConfig {
+        applicationId "android.com.korail.cadsmdm"
+        minSdkVersion 27
+        targetSdkVersion 28
+        versionCode 500
+        versionName '5.0.0'
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file('signature/cadskey.jks')
+            storePassword 'cads1219**'
+            keyAlias 'cads'
+            keyPassword 'cads1219**'
+        }
+        release {
+            storeFile file('signature/cadskey.jks')
+            storePassword 'cads1219**'
+            keyAlias 'cads'
+            keyPassword 'cads1219**'
+        }
+    }
+    buildTypes {
+        release {
+            signingConfig signingConfigs.debug
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            signingConfig signingConfigs.release
+        }
+    }
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/ASL2.0'
+    }
+    lintOptions {
+        checkReleaseBuilds false
+    }
+    dexOptions {
+        javaMaxHeapSize = "4g"
+    }
+    productFlavors {
+    }
+
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    implementation 'com.github.barteksc:android-pdf-viewer:2.5.1'
+    implementation 'gun0912.ted:tedpermission:1.0.2'
+    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'com.google.firebase:firebase-messaging:9.6.1'
+    testImplementation 'junit:junit:4.12'
+    implementation project(path: ':metabits.service.lib.ver7')
+    implementation project(path: ':WheelPicker')
+    implementation files('libs/TransCoord.jar')
+    implementation files('libs/jdom.jar')
+    implementation files('libs/activation.jar')
+    implementation files('libs/additionnal.jar')
+    implementation files('libs/mail.jar')
+    implementation dependenciesList.butterknife
+    implementation files('libs/ExafeMDM-api.jar')
+    implementation files('libs/INICrypto_v4.1.2.jar')
+    implementation files('libs/obf-exafe-exclusive-core-2.1.7.jar')
+    implementation files('libs/VG2SDK.jar')
+    implementation files('libs/json_simple.jar')
+    implementation files('libs/acra-4.5.0.jar')
+    implementation 'com.squareup.okhttp3:okhttp:3.8.0'
+    annotationProcessor dependenciesList.butterknife
+    implementation dependenciesList.mapboxJavaGeoJSON
+    implementation dependenciesList.gson
+    implementation files('libs/jsoup-1.14.3.jar')
+}
+
+
+
+apply plugin: 'com.google.gms.google-services'
